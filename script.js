@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const output = document.getElementById("output");
+
+  // Show "Loading..." with the expected ID
   output.innerHTML = `
-    <tr>
+    <tr id="loading">
       <td colspan="2" class="text-center">Loading...</td>
     </tr>`;
 
-  const startTime = performance.now(); 
+  const startTime = performance.now(); // Start time
 
   const promise1 = new Promise((resolve) => {
     const start = performance.now();
@@ -29,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   Promise.all([promise1, promise2, promise3]).then((results) => {
-    const endTime = performance.now(); 
-    const totalTime = (endTime - startTime) / 1000; 
+    const endTime = performance.now(); // End time
+    const totalTime = (endTime - startTime) / 1000; // Convert to seconds
 
     let tableRows = results
       .map(
